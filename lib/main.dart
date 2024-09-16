@@ -1,10 +1,14 @@
+import 'package:bookly_clean_arch/Features/home/Domain/entities/bookly_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import 'constants.dart';
 import 'core/utils/app_router.dart';
 
-void main() {
+void main() async {
+  Hive.registerAdapter(BookEntityAdapter());
+  await Hive.openBox(kFeaturedBox);
   runApp(const Bookly());
 }
 
