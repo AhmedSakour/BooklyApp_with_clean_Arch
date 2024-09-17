@@ -3,6 +3,7 @@ import 'package:bookly_clean_arch/Features/home/Domain/repos/home_repo.dart';
 import 'package:bookly_clean_arch/Features/home/data/data%20_sources/home_local_data_source.dart';
 import 'package:dartz/dartz.dart';
 import 'package:bookly_clean_arch/core/error/failure.dart';
+import 'package:dio/dio.dart';
 
 import '../data _sources/home_remote_data_source.dart';
 
@@ -21,7 +22,10 @@ class HomeRepoImpl extends HomeRepo {
       var remoteBooks = await homeRemoteDataSource.fetchFeaturedBooks();
       return right(remoteBooks);
     } catch (e) {
-      return left(Failure());
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 
@@ -35,7 +39,10 @@ class HomeRepoImpl extends HomeRepo {
       var remoteBooks = await homeRemoteDataSource.fetchNewSetBooks();
       return right(remoteBooks);
     } catch (e) {
-      return left(Failure());
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 }
