@@ -43,7 +43,8 @@ dependencies:
   dio:
   hive:
   hive_flutter: 
-  bloc:
+  flutter_bloc:
+  get_it:
 
 dev_dependencies:
   flutter_test:
