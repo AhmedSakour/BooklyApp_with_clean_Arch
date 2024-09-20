@@ -14,7 +14,8 @@ class _CustomFadingAnimationState extends State<CustomFadingAnimation>
   late final AnimationController _animationController;
   @override
   void initState() {
-    _animationController = AnimationController(vsync: this);
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 300));
     _animation =
         Tween<double>(begin: .2, end: .8).animate(_animationController);
     _animationController.addListener(() {
@@ -22,6 +23,12 @@ class _CustomFadingAnimationState extends State<CustomFadingAnimation>
     });
     _animationController.repeat(reverse: true);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override

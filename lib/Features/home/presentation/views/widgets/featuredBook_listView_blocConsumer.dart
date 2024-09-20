@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/functions/error_snackBar.dart';
 import '../../../Domain/entities/bookly_entity.dart';
+import 'featuredBook_listView_loading.dart';
 
 class FeaturedBookListViewBlocConsumer extends StatefulWidget {
   const FeaturedBookListViewBlocConsumer({
@@ -41,7 +42,7 @@ class _FeaturedBookListViewBlocConsumerState
         } else if (state is FeaturedBookFailure) {
           return Center(child: Text(state.errorMessage));
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const FeaturedBooksListViewLoading();
         }
       },
     );

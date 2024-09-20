@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
 import 'best_seller_list_view.dart';
 import 'custom_app_bar.dart';
-import 'featuredBook_listView_blocBuilder.dart';
+import 'featuredBook_listView_blocConsumer.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({Key? key}) : super(key: key);
