@@ -6,5 +6,6 @@ import '../entities/bookly_entity.dart';
 abstract class HomeRepo {
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks(
       {int pageNumber = 0});
-  Future<Either<Failure, List<BookEntity>>> fetchNewSetBooks();
+  Future<Either<Failure, List<BookEntity>>> fetchNewSetBooks(
+      {int pageNumber = 0});
 }
