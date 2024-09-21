@@ -12,9 +12,9 @@ class BookEntity {
   @HiveField(3)
   final String author;
   @HiveField(4)
-  final num price;
+  final num? price;
   @HiveField(5)
-  final num rating;
+  final num? rating;
   BookEntity({
     required this.bookId,
     required this.image,

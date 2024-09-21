@@ -1,5 +1,7 @@
+import 'package:bookly_clean_arch/Features/home/Domain/entities/bookly_entity.dart';
 import 'package:bookly_clean_arch/Features/home/presentation/manager/NewsetBooks_cubit/newset_books_cubit.dart';
 import 'package:bookly_clean_arch/Features/home/presentation/views/widgets/best_seller_list_view.dart';
+import 'package:bookly_clean_arch/core/utils/functions/error_snackBar.dart';
 
 import 'package:flutter/material.dart';
 
@@ -12,15 +14,25 @@ class BestSellerListViewBlocConsumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<BookEntity> books = [];
     return BlocConsumer<NewsetBooksCubit, NewsetBooksState>(
-      listener: (context, state) {},
-      builder: (context, state) {
+      listener: (context, state) {
         if (state is NewsetBooksSucsses) {
+          books.addAll(state.books);
+        }
+        if (state is NewsetBooksFailurePagination) {
+          errorSnackBar(context, state.errorMessage);
+        }
+      },
+      builder: (context, state) {
+        if (state is NewsetBooksSucsses ||
+            state is NewsetBooksLoadingPagination ||
+            state is NewsetBooksFailurePagination) {
           return BestSellerListView(
-            books: state.books,
+            books: books,
           );
         } else if (state is NewsetBooksFailure) {
-          return Text(state.errorMessage);
+          return Center(child: Text(state.errorMessage));
         } else {
           return const Center(child: BestSellerListViewLoading());
         }

@@ -14,13 +14,13 @@ class VolumeInfo {
   int? pageCount;
   String? printType;
   List<String>? categories;
-  int? averageRating;
-  int? ratingsCount;
+  num? averageRating;
+  num? ratingsCount;
   String? maturityRating;
   bool? allowAnonLogging;
   String? contentVersion;
   PanelizationSummary? panelizationSummary;
-  ImageLinks imageLinks;
+  ImageLinks? imageLinks;
   String? language;
   String? previewLink;
   String? infoLink;
@@ -43,7 +43,7 @@ class VolumeInfo {
     this.allowAnonLogging,
     this.contentVersion,
     this.panelizationSummary,
-    required this.imageLinks,
+    this.imageLinks,
     this.language,
     this.previewLink,
     this.infoLink,
@@ -52,7 +52,9 @@ class VolumeInfo {
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
         title: json['title'] as String?,
-        authors: (json['authors'] as List<dynamic>?)?.cast<String>(),
+        authors: (json['authors'] as List<dynamic>?)
+            ?.map((author) => author.toString())
+            .toList(),
         publisher: json['publisher'] as String?,
         publishedDate: json['publishedDate'] as String?,
         description: json['description'] as String?,
@@ -65,9 +67,11 @@ class VolumeInfo {
                 json['readingModes'] as Map<String, dynamic>),
         pageCount: json['pageCount'] as int?,
         printType: json['printType'] as String?,
-        categories: (json['categories'] as List<dynamic>?)?.cast<String>(),
-        averageRating: (json['averageRating'] as num?)?.toInt(),
-        ratingsCount: json['ratingsCount'] as int?,
+        categories: (json['categories'] as List<dynamic>?)
+            ?.map((category) => category.toString())
+            .toList(),
+        averageRating: json['averageRating'] as num?,
+        ratingsCount: json['ratingsCount'] as num?,
         maturityRating: json['maturityRating'] as String?,
         allowAnonLogging: json['allowAnonLogging'] as bool?,
         contentVersion: json['contentVersion'] as String?,
@@ -75,8 +79,9 @@ class VolumeInfo {
             ? null
             : PanelizationSummary.fromJson(
                 json['panelizationSummary'] as Map<String, dynamic>),
-        imageLinks:
-            ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
+        imageLinks: json['imageLinks'] == null
+            ? null
+            : ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
         language: json['language'] as String?,
         previewLink: json['previewLink'] as String?,
         infoLink: json['infoLink'] as String?,
@@ -101,7 +106,7 @@ class VolumeInfo {
         'allowAnonLogging': allowAnonLogging,
         'contentVersion': contentVersion,
         'panelizationSummary': panelizationSummary?.toJson(),
-        'imageLinks': imageLinks.toJson(),
+        'imageLinks': imageLinks?.toJson(),
         'language': language,
         'previewLink': previewLink,
         'infoLink': infoLink,
