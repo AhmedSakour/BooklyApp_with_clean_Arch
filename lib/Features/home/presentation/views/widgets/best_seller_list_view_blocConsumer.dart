@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'best_seller_list_view_loading.dart';
+
 class BestSellerListViewBlocConsumer extends StatelessWidget {
   const BestSellerListViewBlocConsumer({super.key});
 
@@ -20,7 +22,7 @@ class BestSellerListViewBlocConsumer extends StatelessWidget {
         } else if (state is NewsetBooksFailure) {
           return Text(state.errorMessage);
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: BestSellerListViewLoading());
         }
       },
     );
