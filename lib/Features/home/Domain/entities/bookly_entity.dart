@@ -20,7 +20,7 @@ class BookEntity {
     required this.image,
     required this.title,
     required this.author,
-    required this.price,
-    required this.rating,
+    this.price,
+    this.rating,
   });
 }
