@@ -42,4 +42,14 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     }
     return books;
   }
+
+  @override
+  Future<List<BookEntity>> fetchSimilerBooks() async {
+    var data = await apiService.get(
+        endpoint:
+            'volumes?Filtering=free-ebooks&Sorting=relevance &q=subject:Programming');
+    List<BookEntity> books = getListBook(data);
+    saveBookData(books, kSimilerBox);
+    return books;
+  }
 }
