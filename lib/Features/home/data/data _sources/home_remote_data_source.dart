@@ -8,6 +8,7 @@ import '../models/book_model/book_model.dart';
 abstract class HomeRemoteDataSource {
   Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0});
   Future<List<BookEntity>> fetchNewSetBooks({int pageNumber = 0});
+  Future<List<BookEntity>> fetchSimilerBooks();
 }
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
