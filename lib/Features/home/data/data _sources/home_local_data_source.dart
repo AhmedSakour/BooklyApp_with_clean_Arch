@@ -6,6 +6,7 @@ import '../../Domain/entities/bookly_entity.dart';
 abstract class HomeLocalDataSource {
   List<BookEntity> fetchFeaturedBooks({int pageNumber = 0});
   List<BookEntity> fetchNewSetBooks({int pageNumber = 0});
+  List<BookEntity> fetchSimilerBook();
 }
 
 class HomeLocalDataSourceImpl extends HomeLocalDataSource {
@@ -32,5 +33,11 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
       return [];
     }
     return box.values.toList().sublist(startIndex, endIndex);
+  }
+
+  @override
+  List<BookEntity> fetchSimilerBook() {
+    // TODO: implement fetchSimilerBook
+    throw UnimplementedError();
   }
 }
