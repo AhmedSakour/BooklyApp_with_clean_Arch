@@ -8,4 +8,5 @@ abstract class HomeRepo {
       {int pageNumber = 0});
   Future<Either<Failure, List<BookEntity>>> fetchNewSetBooks(
       {int pageNumber = 0});
+  Future<Either<Failure, List<BookEntity>>> fetchSimilerBooks();
 }

@@ -52,4 +52,9 @@ class HomeRepoImpl extends HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, List<BookEntity>>> fetchSimilerBooks() {
+    throw UnimplementedError();
+  }
 }
