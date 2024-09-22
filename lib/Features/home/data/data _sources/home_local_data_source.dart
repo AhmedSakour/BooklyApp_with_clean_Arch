@@ -37,7 +37,7 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
 
   @override
   List<BookEntity> fetchSimilerBook() {
-    // TODO: implement fetchSimilerBook
-    throw UnimplementedError();
+    var box = Hive.box<BookEntity>(kSimilerBox);
+    return box.values.toList();
   }
 }
