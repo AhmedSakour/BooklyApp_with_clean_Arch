@@ -45,18 +45,16 @@ class _BestSellerListViewState extends State<BestSellerListView> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        controller: scrollController,
-        padding: EdgeInsets.zero,
-        itemCount: widget.books.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: BookListViewItem(bookEntity: widget.books[index]),
-          );
-        },
-      ),
+    return ListView.builder(
+      controller: scrollController,
+      padding: EdgeInsets.zero,
+      itemCount: widget.books.length,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: BookListViewItem(bookEntity: widget.books[index]),
+        );
+      },
     );
   }
 }
