@@ -52,7 +52,7 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 37,
         ),
-        BooksAction(price: '${bookEntity.price}'),
+        BooksAction(url: '${bookEntity.bookUrl}', price: '${bookEntity.price}'),
       ],
     );
   }
