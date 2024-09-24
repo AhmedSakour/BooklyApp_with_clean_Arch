@@ -1,9 +1,8 @@
 import 'package:bookly_clean_arch/Features/home/presentation/manager/similerBooks_cubit/similer_books_cubit.dart';
 import 'package:bookly_clean_arch/Features/home/presentation/views/widgets/similar_books_list_view.dart';
+import 'package:bookly_clean_arch/Features/home/presentation/views/widgets/similerBooks_listView_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'featuredBook_listView_loading.dart';
 
 class SimilerBooksListViewBlocConsumner extends StatelessWidget {
   const SimilerBooksListViewBlocConsumner({super.key});
@@ -18,9 +17,9 @@ class SimilerBooksListViewBlocConsumner extends StatelessWidget {
             books: state.books,
           );
         } else if (state is SimilerBooksFailure) {
-          return Text(state.errorMessage);
+          return Center(child: Text(state.errorMessage));
         } else {
-          return const FeaturedBooksListViewLoading();
+          return const SimilerBooksListViewLoading();
         }
       },
     );
