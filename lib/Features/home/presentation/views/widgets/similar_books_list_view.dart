@@ -54,7 +54,7 @@ class _SimilarBooksListviewState extends State<SimilarBooksListview> {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: CustomBookImage(image: widget.books[index].image),
+              child: CustomBookImage(bookEntity: widget.books[index]),
             );
           }),
     );

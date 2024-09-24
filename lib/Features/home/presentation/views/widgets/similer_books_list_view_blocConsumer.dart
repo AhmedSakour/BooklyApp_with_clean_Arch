@@ -7,12 +7,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/functions/error_snackBar.dart';
 import '../../../Domain/entities/bookly_entity.dart';
 
-class SimilerBooksListViewBlocConsumner extends StatelessWidget {
+class SimilerBooksListViewBlocConsumner extends StatefulWidget {
   const SimilerBooksListViewBlocConsumner({super.key});
 
   @override
+  State<SimilerBooksListViewBlocConsumner> createState() =>
+      _SimilerBooksListViewBlocConsumnerState();
+}
+
+class _SimilerBooksListViewBlocConsumnerState
+    extends State<SimilerBooksListViewBlocConsumner> {
+  final List<BookEntity> books = [];
+
+  @override
   Widget build(BuildContext context) {
-    List<BookEntity> books = [];
     return BlocConsumer<SimilerBooksCubit, SimilerBooksState>(
       listener: (context, state) {
         if (state is SimilerBooksSuccess) {
@@ -27,7 +35,7 @@ class SimilerBooksListViewBlocConsumner extends StatelessWidget {
             state is SimilerBooksPaginationLoading ||
             state is SimilerBooksPaginationFailure) {
           return SimilarBooksListview(
-            books: books,
+            books: state is SimilerBooksSuccess ? state.books : books,
           );
         } else if (state is SimilerBooksFailure) {
           return Center(child: Text(state.errorMessage));

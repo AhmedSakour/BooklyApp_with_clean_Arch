@@ -3,6 +3,7 @@ import 'package:bookly_clean_arch/Features/home/presentation/manager/featuredBoo
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../book_details_view.dart';
 import 'custom_book_item.dart';
 
 class FeaturedBooksListView extends StatefulWidget {
@@ -54,9 +55,18 @@ class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
           controller: _scrollController,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: CustomBookImage(image: widget.books[index].image),
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return BookDetailsView(bookEntity: widget.books[index]);
+                  },
+                ));
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: CustomBookImage(bookEntity: widget.books[index]),
+              ),
             );
           }),
     );
