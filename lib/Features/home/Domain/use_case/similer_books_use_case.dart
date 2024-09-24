@@ -4,12 +4,12 @@ import 'package:bookly_clean_arch/core/error/failure.dart';
 import 'package:bookly_clean_arch/core/use_cases/use_case.dart';
 import 'package:dartz/dartz.dart';
 
-class FetchSimilerBookUseCase extends UseCase<List<BookEntity>, NoParams> {
+class FetchSimilerBookUseCase extends UseCase<List<BookEntity>, int> {
   final HomeRepo homeRepo;
 
   FetchSimilerBookUseCase({required this.homeRepo});
   @override
-  Future<Either<Failure, List<BookEntity>>> call([NoParams? param]) async {
-    return await homeRepo.fetchSimilerBooks();
+  Future<Either<Failure, List<BookEntity>>> call([int pageNumber = 0]) async {
+    return await homeRepo.fetchSimilerBooks(pageNumber: pageNumber);
   }
 }

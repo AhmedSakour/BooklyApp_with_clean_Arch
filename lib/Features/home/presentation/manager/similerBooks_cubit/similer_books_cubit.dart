@@ -8,9 +8,9 @@ class SimilerBooksCubit extends Cubit<SimilerBooksState> {
   SimilerBooksCubit(this.fetchSimilerBookUseCase)
       : super(SimilerBooksInitial());
   final FetchSimilerBookUseCase fetchSimilerBookUseCase;
-  Future<void> fetchSimilerBooks() async {
+  Future<void> fetchSimilerBooks({int pageNumber = 0}) async {
     emit(SimilerBooksLoading());
-    var result = await fetchSimilerBookUseCase.call();
+    var result = await fetchSimilerBookUseCase.call(pageNumber);
     result.fold((l) => emit(SimilerBooksFailure(l.erroMessage)),
         (r) => emit(SimilerBooksSuccess(r)));
   }
