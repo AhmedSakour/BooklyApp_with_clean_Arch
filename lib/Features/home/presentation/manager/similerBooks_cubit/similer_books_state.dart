@@ -6,6 +6,8 @@ class SimilerBooksInitial extends SimilerBooksState {}
 
 class SimilerBooksLoading extends SimilerBooksState {}
 
+class SimilerBooksPaginationLoading extends SimilerBooksState {}
+
 class SimilerBooksSuccess extends SimilerBooksState {
   final List<BookEntity> books;
 
@@ -16,4 +18,10 @@ class SimilerBooksFailure extends SimilerBooksState {
   final String errorMessage;
 
   SimilerBooksFailure(this.errorMessage);
+}
+
+class SimilerBooksPaginationFailure extends SimilerBooksState {
+  final String errorMessage;
+
+  SimilerBooksPaginationFailure(this.errorMessage);
 }
