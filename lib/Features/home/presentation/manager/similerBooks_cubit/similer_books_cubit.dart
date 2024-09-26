@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:bookly_clean_arch/Features/home/Domain/entities/bookly_entity.dart';
 import 'package:bookly_clean_arch/Features/home/Domain/use_case/similer_books_use_case.dart';
+
+import '../../../../../core/entities/bookly_entity.dart';
 
 part 'similer_books_state.dart';
 
