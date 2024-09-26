@@ -1,4 +1,4 @@
-import '../../../Features/home/data/models/book_model/book_model.dart';
+import '../../book_model/book_model.dart';
 import '../../entities/bookly_entity.dart';
 
 List<BookEntity> getListBook(Map<String, dynamic> data) {
