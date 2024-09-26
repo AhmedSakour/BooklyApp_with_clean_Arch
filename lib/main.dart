@@ -3,6 +3,8 @@ import 'package:bookly_clean_arch/Features/home/Domain/use_case/similer_books_us
 import 'package:bookly_clean_arch/Features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly_clean_arch/Features/home/presentation/manager/NewsetBooks_cubit/newset_books_cubit.dart';
 import 'package:bookly_clean_arch/Features/home/presentation/manager/similerBooks_cubit/similer_books_cubit.dart';
+import 'package:bookly_clean_arch/Features/search/Domain/use_case/fetch_search_result_use_case.dart';
+import 'package:bookly_clean_arch/Features/search/presentation/manager/search_cubit/search_cubit.dart';
 import 'package:bookly_clean_arch/core/utils/bloc_observer.dart';
 import 'package:bookly_clean_arch/core/utils/functions/service_locator.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,7 @@ import 'package:hive_flutter/adapters.dart';
 
 import 'Features/home/Domain/use_case/fetch_featuredBook_use_case.dart';
 import 'Features/home/presentation/manager/featuredBook_cubit/featured_book_cubit.dart';
+import 'Features/search/data/repo/search_repo_impl.dart';
 import 'constants.dart';
 import 'core/entities/bookly_entity.dart';
 import 'core/utils/app_router.dart';
@@ -22,7 +25,7 @@ void main() async {
   await Hive.openBox<BookEntity>(kFeaturedBox);
   await Hive.openBox<BookEntity>(kNewSetBox);
   await Hive.openBox<BookEntity>(kSimilerBox);
-  await Hive.openBox<BookEntity>(kSearchBox);
+
   Bloc.observer = SimpleBlocObserver();
   setupServiceLocator();
   runApp(const Bookly());
@@ -48,6 +51,10 @@ class Bookly extends StatelessWidget {
           create: (context) => SimilerBooksCubit(
               FetchSimilerBookUseCase(homeRepo: getIt.get<HomeRepoImpl>()))
             ..fetchSimilerBooks(),
+        ),
+        BlocProvider(
+          create: (context) => SearchCubit(FethcSearchResultUseCase(
+              searchRepo: getIt.get<SearchRepoImpl>())),
         )
       ],
       child: MaterialApp.router(

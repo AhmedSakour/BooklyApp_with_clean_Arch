@@ -8,7 +8,7 @@ import 'package:dio/dio.dart';
 class SearchRepoImpl extends SearchRepo {
   final SearchRemoteDataSourceImpl searchRemoteDataSourceImpl;
 
-  SearchRepoImpl(this.searchRemoteDataSourceImpl);
+  SearchRepoImpl({required this.searchRemoteDataSourceImpl});
   @override
   Future<Either<Failure, List<BookEntity>>> fetchSearchResult(
       {required String searchInput}) async {

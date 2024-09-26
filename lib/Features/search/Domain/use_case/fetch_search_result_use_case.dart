@@ -9,7 +9,7 @@ import '../repos/search_repo.dart';
 class FethcSearchResultUseCase extends UseCase<List<BookEntity>, String> {
   final SearchRepo searchRepo;
 
-  FethcSearchResultUseCase(this.searchRepo);
+  FethcSearchResultUseCase({required this.searchRepo});
 
   @override
   Future<Either<Failure, List<BookEntity>>> call([String param = '']) async {
