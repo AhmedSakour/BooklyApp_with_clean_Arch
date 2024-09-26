@@ -1,8 +1,8 @@
-import 'package:bookly_clean_arch/Features/home/Domain/entities/bookly_entity.dart';
 import 'package:bookly_clean_arch/Features/home/presentation/manager/featuredBook_cubit/featured_book_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/entities/bookly_entity.dart';
 import '../book_details_view.dart';
 import 'custom_book_item.dart';
 

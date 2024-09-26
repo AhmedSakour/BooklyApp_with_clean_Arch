@@ -1,4 +1,4 @@
-import '../../../Domain/entities/bookly_entity.dart';
+import '../../../../../core/entities/bookly_entity.dart';
 import 'access_info.dart';
 import 'sale_info.dart';
 import 'search_info.dart';

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 
-import '../../../Domain/entities/bookly_entity.dart';
+import '../../../../../core/entities/bookly_entity.dart';
 import '../../../Domain/use_case/fetch_newset_books_use_case.dart';
 
 part 'newset_books_state.dart';

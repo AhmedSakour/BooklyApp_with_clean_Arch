@@ -1,10 +1,10 @@
-import 'package:bookly_clean_arch/Features/home/Domain/entities/bookly_entity.dart';
 import 'package:bookly_clean_arch/Features/home/Domain/repos/home_repo.dart';
 import 'package:bookly_clean_arch/Features/home/data/data%20_sources/home_local_data_source.dart';
 import 'package:dartz/dartz.dart';
 import 'package:bookly_clean_arch/core/error/failure.dart';
 import 'package:dio/dio.dart';
 
+import '../../../../core/entities/bookly_entity.dart';
 import '../data _sources/home_remote_data_source.dart';
 
 class HomeRepoImpl extends HomeRepo {

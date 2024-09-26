@@ -1,8 +1,8 @@
-import 'package:bookly_clean_arch/Features/home/Domain/entities/bookly_entity.dart';
 import 'package:bookly_clean_arch/Features/home/presentation/manager/NewsetBooks_cubit/newset_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/entities/bookly_entity.dart';
 import 'best_seller_list_view_item.dart';
 
 class BestSellerListView extends StatefulWidget {

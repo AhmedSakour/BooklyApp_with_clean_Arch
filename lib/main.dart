@@ -1,4 +1,3 @@
-import 'package:bookly_clean_arch/Features/home/Domain/entities/bookly_entity.dart';
 import 'package:bookly_clean_arch/Features/home/Domain/use_case/fetch_newset_books_use_case.dart';
 import 'package:bookly_clean_arch/Features/home/Domain/use_case/similer_books_use_case.dart';
 import 'package:bookly_clean_arch/Features/home/data/repos/home_repo_impl.dart';
@@ -14,6 +13,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'Features/home/Domain/use_case/fetch_featuredBook_use_case.dart';
 import 'Features/home/presentation/manager/featuredBook_cubit/featured_book_cubit.dart';
 import 'constants.dart';
+import 'core/entities/bookly_entity.dart';
 import 'core/utils/app_router.dart';
 
 void main() async {

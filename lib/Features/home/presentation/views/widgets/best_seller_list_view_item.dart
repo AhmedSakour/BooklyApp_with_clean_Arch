@@ -1,8 +1,8 @@
-import 'package:bookly_clean_arch/Features/home/Domain/entities/bookly_entity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../constants.dart';
+import '../../../../../core/entities/bookly_entity.dart';
 import '../../../../../core/utils/styles.dart';
 import '../book_details_view.dart';
 import 'book_rating.dart';

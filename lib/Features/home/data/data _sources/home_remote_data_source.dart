@@ -1,8 +1,9 @@
 import 'package:bookly_clean_arch/constants.dart';
 import 'package:bookly_clean_arch/core/utils/api_service.dart';
 
+import '../../../../core/entities/bookly_entity.dart';
 import '../../../../core/utils/functions/save_book_data.dart';
-import '../../Domain/entities/bookly_entity.dart';
+
 import '../models/book_model/book_model.dart';
 
 abstract class HomeRemoteDataSource {

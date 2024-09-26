@@ -1,3 +1,4 @@
+import 'package:bookly_clean_arch/Features/search/presentation/views/widgets/search_result_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -30,23 +31,6 @@ class SearchViewBody extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: EdgeInsets.zero,
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Container());
-      },
     );
   }
 }

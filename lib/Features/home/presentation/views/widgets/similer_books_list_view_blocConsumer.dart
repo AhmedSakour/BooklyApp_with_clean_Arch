@@ -4,8 +4,8 @@ import 'package:bookly_clean_arch/Features/home/presentation/views/widgets/simil
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/entities/bookly_entity.dart';
 import '../../../../../core/utils/functions/error_snackBar.dart';
-import '../../../Domain/entities/bookly_entity.dart';
 
 class SimilerBooksListViewBlocConsumner extends StatefulWidget {
   const SimilerBooksListViewBlocConsumner({super.key});

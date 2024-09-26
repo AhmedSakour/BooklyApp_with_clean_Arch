@@ -1,8 +1,8 @@
-import 'package:bookly_clean_arch/Features/home/Domain/entities/bookly_entity.dart';
 import 'package:bookly_clean_arch/Features/home/presentation/views/widgets/similar_books_section.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/entities/bookly_entity.dart';
 import 'books_details_sectioni.dart';
 import 'custom_book_details_app_bar.dart';
 
