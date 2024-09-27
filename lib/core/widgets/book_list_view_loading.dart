@@ -1,8 +1,8 @@
-import 'package:bookly_clean_arch/Features/home/presentation/views/widgets/best_seller%20_list_view_item_loading.dart';
+import 'package:bookly_clean_arch/core/widgets/book%20_list_view_item_loading.dart';
 import 'package:flutter/material.dart';
 
-class BestSellerListViewLoading extends StatelessWidget {
-  const BestSellerListViewLoading({
+class BookListViewLoading extends StatelessWidget {
+  const BookListViewLoading({
     super.key,
   });
 

@@ -3,6 +3,8 @@ import 'package:bookly_clean_arch/Features/search/presentation/views/widgets/sea
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/widgets/book_list_view_loading.dart';
+
 class SearchResultBlocConsumer extends StatelessWidget {
   const SearchResultBlocConsumer({super.key});
 
@@ -18,7 +20,7 @@ class SearchResultBlocConsumer extends StatelessWidget {
         } else if (state is SearchFailure) {
           return Center(child: Text(state.errorMessage));
         } else if (state is SearchLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: BookListViewLoading());
         } else {
           return Container();
         }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/utils/app_router.dart';
+import '../utils/app_router.dart';
 
 class BookListViewItemLoading extends StatelessWidget {
   const BookListViewItemLoading({
