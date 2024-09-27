@@ -7,9 +7,10 @@ part 'search_state.dart';
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.fethcSearchResultUseCase) : super(SearchInitial());
   final FethcSearchResultUseCase fethcSearchResultUseCase;
-  Future<void> fetchSearchResult({required String searchInput}) async {
+  Future<void> fetchSearchResult(
+      {required String searchInput, int pageNumber = 0}) async {
     emit(SearchLoading());
-    var data = await fethcSearchResultUseCase.call(searchInput);
+    var data = await fethcSearchResultUseCase.call(searchInput, pageNumber);
     data.fold((l) => emit(SearchFailure(l.erroMessage)),
         (r) => emit(SearchSuccess(r)));
   }

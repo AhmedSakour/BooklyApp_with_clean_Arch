@@ -12,9 +12,10 @@ class SearchRemoteDataSourceImpl extends SearchRmoteDataSource {
   SearchRemoteDataSourceImpl(this.apiService);
   @override
   Future<List<BookEntity>> fetchSearchResult(
-      {required String searchInput}) async {
+      {required String searchInput, int pageNumber = 0}) async {
     var response = await apiService.get(
-        endpoint: 'volumes?Filtering=free-ebooks&q=subject:$searchInput');
+        endpoint:
+            'volumes?Filtering=free-ebooks&q=subject:$searchInput&startIndex=${pageNumber * 10}');
     List<BookEntity> books = getListBook(response);
 
     return books;

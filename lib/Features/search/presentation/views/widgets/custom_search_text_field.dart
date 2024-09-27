@@ -1,3 +1,4 @@
+import 'package:bookly_clean_arch/Features/search/presentation/manager/Search_Input_cubit/search_input_cubit.dart';
 import 'package:bookly_clean_arch/Features/search/presentation/manager/search_cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +14,10 @@ class CustomSearchTextField extends StatelessWidget {
       onSubmitted: (value) async {
         await BlocProvider.of<SearchCubit>(context)
             .fetchSearchResult(searchInput: controller.text);
+      },
+      onChanged: (value) async {
+        await BlocProvider.of<SearchInputCubit>(context)
+            .setSearchInput(controller.text);
       },
       controller: controller,
       decoration: InputDecoration(

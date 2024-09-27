@@ -4,5 +4,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class SearchRepo {
   Future<Either<Failure, List<BookEntity>>> fetchSearchResult(
-      {required String searchInput});
+      {required String searchInput, int pageNumber = 0});
 }

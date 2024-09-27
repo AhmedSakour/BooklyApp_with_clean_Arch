@@ -11,10 +11,10 @@ class SearchRepoImpl extends SearchRepo {
   SearchRepoImpl({required this.searchRemoteDataSourceImpl});
   @override
   Future<Either<Failure, List<BookEntity>>> fetchSearchResult(
-      {required String searchInput}) async {
+      {required String searchInput, int pageNumber = 0}) async {
     try {
       var remoteBooks = await searchRemoteDataSourceImpl.fetchSearchResult(
-          searchInput: searchInput);
+          searchInput: searchInput, pageNumber: pageNumber);
       return right(remoteBooks);
     } on Exception catch (e) {
       if (e is DioException) {

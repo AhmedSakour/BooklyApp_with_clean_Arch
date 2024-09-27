@@ -12,7 +12,9 @@ class FethcSearchResultUseCase extends UseCase<List<BookEntity>, String> {
   FethcSearchResultUseCase({required this.searchRepo});
 
   @override
-  Future<Either<Failure, List<BookEntity>>> call([String param = '']) async {
-    return await searchRepo.fetchSearchResult(searchInput: param);
+  Future<Either<Failure, List<BookEntity>>> call(
+      [String param = '', int pageNumber = 0]) async {
+    return await searchRepo.fetchSearchResult(
+        searchInput: param, pageNumber: pageNumber);
   }
 }

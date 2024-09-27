@@ -3,6 +3,7 @@ import 'package:bookly_clean_arch/Features/home/Domain/use_case/similer_books_us
 import 'package:bookly_clean_arch/Features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly_clean_arch/Features/home/presentation/manager/NewsetBooks_cubit/newset_books_cubit.dart';
 import 'package:bookly_clean_arch/Features/home/presentation/manager/similerBooks_cubit/similer_books_cubit.dart';
+import 'package:bookly_clean_arch/Features/search/presentation/manager/Search_Input_cubit/search_input_cubit.dart';
 import 'package:bookly_clean_arch/core/utils/bloc_observer.dart';
 import 'package:bookly_clean_arch/core/utils/functions/service_locator.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,9 @@ class Bookly extends StatelessWidget {
               FetchSimilerBookUseCase(homeRepo: getIt.get<HomeRepoImpl>()))
             ..fetchSimilerBooks(),
         ),
+        BlocProvider(
+          create: (context) => SearchInputCubit(),
+        )
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
