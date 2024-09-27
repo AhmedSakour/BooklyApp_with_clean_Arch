@@ -1,12 +1,20 @@
+import 'package:bookly_clean_arch/Features/search/presentation/manager/search_cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomSearchTextField extends StatelessWidget {
-  const CustomSearchTextField({super.key});
+  CustomSearchTextField({super.key});
+  final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onSubmitted: (value) async {
+        await BlocProvider.of<SearchCubit>(context)
+            .fetchSearchResult(searchInput: controller.text);
+      },
+      controller: controller,
       decoration: InputDecoration(
         enabledBorder: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(),

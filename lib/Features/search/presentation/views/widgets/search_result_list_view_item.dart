@@ -4,22 +4,24 @@ import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/entities/bookly_entity.dart';
 import '../../../../../core/utils/styles.dart';
-import '../book_details_view.dart';
 import '../../../../../core/widgets/book_rating.dart';
 
-class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key, required this.bookEntity});
-  final BookEntity bookEntity;
+class SearchBookListViewItem extends StatelessWidget {
+  const SearchBookListViewItem({
+    super.key,
+    required this.book,
+  });
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => BookDetailsView(bookEntity: bookEntity),
-            ));
+        // Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) => BookDetailsView(bookEntity: bookEntity),
+        //     ));
       },
       child: SizedBox(
         height: 125,
@@ -30,7 +32,7 @@ class BookListViewItem extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: CachedNetworkImage(
-                  imageUrl: bookEntity.image,
+                  imageUrl: book.image,
                   fit: BoxFit.cover,
                   errorWidget: (context, url, error) =>
                       const Center(child: Icon(Icons.error)),
@@ -47,7 +49,7 @@ class BookListViewItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
                     child: Text(
-                      bookEntity.title,
+                      book.title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle20.copyWith(
@@ -59,7 +61,7 @@ class BookListViewItem extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    bookEntity.author,
+                    book.author,
                     style: Styles.textStyle14,
                   ),
                   const SizedBox(
@@ -68,13 +70,13 @@ class BookListViewItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '\$${bookEntity.price}',
+                        '\$${book.price}',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const Spacer(),
-                      BookRating(rating: '${bookEntity.rating}'),
+                      BookRating(rating: '${book.rating}'),
                     ],
                   ),
                 ],
