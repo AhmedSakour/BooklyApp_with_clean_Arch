@@ -62,6 +62,8 @@ class SearchBookListViewItem extends StatelessWidget {
                   ),
                   Text(
                     book.author,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle14,
                   ),
                   const SizedBox(

@@ -33,7 +33,7 @@ class _SearchResultBlocConsumerState extends State<SearchResultBlocConsumer> {
             state is SearchLoadingPagination ||
             state is SearchFailurePagination) {
           return SearchResultListView(
-            books: books,
+            books: state is SearchSuccess ? state.books : books,
           );
         } else if (state is SearchFailure) {
           return Center(child: Text(state.errorMessage));
