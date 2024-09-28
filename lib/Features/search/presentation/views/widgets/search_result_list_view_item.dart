@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/entities/bookly_entity.dart';
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/styles.dart';
 import '../../../../../core/widgets/book_rating.dart';
-import '../../../../home/presentation/views/book_details_view.dart';
 
 class SearchBookListViewItem extends StatelessWidget {
   const SearchBookListViewItem({
@@ -18,11 +19,10 @@ class SearchBookListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => BookDetailsView(bookEntity: book),
-            ));
+        GoRouter.of(context).push(
+          AppRouter.kBookDetailsView,
+          extra: book,
+        );
       },
       child: SizedBox(
         height: 125,
