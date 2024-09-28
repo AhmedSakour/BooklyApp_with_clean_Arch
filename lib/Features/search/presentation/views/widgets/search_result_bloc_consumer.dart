@@ -27,13 +27,16 @@ class _SearchResultBlocConsumerState extends State<SearchResultBlocConsumer> {
         if (state is SearchFailurePagination) {
           errorSnackBar(context, state.errorMessage);
         }
+        if (state is SearchLoading) {
+          books.clear();
+        }
       },
       builder: (context, state) {
         if (state is SearchSuccess ||
             state is SearchLoadingPagination ||
             state is SearchFailurePagination) {
           return SearchResultListView(
-            books: state is SearchSuccess ? state.books : books,
+            books: books,
           );
         } else if (state is SearchFailure) {
           return Center(child: Text(state.errorMessage));
