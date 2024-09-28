@@ -11,6 +11,7 @@ class BookListViewLoading extends StatelessWidget {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
+      shrinkWrap: true,
       itemCount: 10,
       itemBuilder: (context, index) {
         return const Padding(

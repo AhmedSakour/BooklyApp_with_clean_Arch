@@ -3,7 +3,8 @@ import 'package:bookly_clean_arch/core/utils/api_service.dart';
 import 'package:bookly_clean_arch/core/utils/functions/get_list_books.dart';
 
 abstract class SearchRmoteDataSource {
-  Future<List<BookEntity>> fetchSearchResult({required String searchInput});
+  Future<List<BookEntity>> fetchSearchResult(
+      {required String searchInput, int pageNumber = 0});
 }
 
 class SearchRemoteDataSourceImpl extends SearchRmoteDataSource {
@@ -15,7 +16,7 @@ class SearchRemoteDataSourceImpl extends SearchRmoteDataSource {
       {required String searchInput, int pageNumber = 0}) async {
     var response = await apiService.get(
         endpoint:
-            'volumes?Filtering=free-ebooks&q=subject:$searchInput&startIndex=${pageNumber * 10}');
+            'volumes?Filtering=free-ebooks&startIndex=${pageNumber * 10}&q=subject:$searchInput');
     List<BookEntity> books = getListBook(response);
 
     return books;

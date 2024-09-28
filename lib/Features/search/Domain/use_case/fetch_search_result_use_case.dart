@@ -6,7 +6,7 @@ import 'package:bookly_clean_arch/core/error/failure.dart';
 import '../../../../core/use_cases/use_case.dart';
 import '../repos/search_repo.dart';
 
-class FethcSearchResultUseCase extends UseCase<List<BookEntity>, String> {
+class FethcSearchResultUseCase extends UseCase<List<BookEntity>, String, int> {
   final SearchRepo searchRepo;
 
   FethcSearchResultUseCase({required this.searchRepo});

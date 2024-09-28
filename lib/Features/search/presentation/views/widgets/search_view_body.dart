@@ -18,26 +18,26 @@ class SearchViewBody extends StatelessWidget {
     return BlocProvider(
       create: (context) => SearchCubit(
           FethcSearchResultUseCase(searchRepo: getIt.get<SearchRepoImpl>())),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomSearchTextField(),
-            const SizedBox(
-              height: 16,
-            ),
-            const Text(
-              'Search Result',
-              style: Styles.textStyle18,
-            ),
-            const SizedBox(
-              height: 36,
-            ),
-            const Expanded(
-              child: SearchResultBlocConsumer(),
-            ),
-          ],
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomSearchTextField(),
+              const SizedBox(
+                height: 16,
+              ),
+              const Text(
+                'Search Result',
+                style: Styles.textStyle18,
+              ),
+              const SizedBox(
+                height: 36,
+              ),
+              const SearchResultBlocConsumer(),
+            ],
+          ),
         ),
       ),
     );

@@ -14,8 +14,6 @@ class CustomSearchTextField extends StatelessWidget {
       onSubmitted: (value) async {
         await BlocProvider.of<SearchCubit>(context)
             .fetchSearchResult(searchInput: controller.text);
-      },
-      onChanged: (value) async {
         await BlocProvider.of<SearchInputCubit>(context)
             .setSearchInput(controller.text);
       },

@@ -9,9 +9,17 @@ class SearchCubit extends Cubit<SearchState> {
   final FethcSearchResultUseCase fethcSearchResultUseCase;
   Future<void> fetchSearchResult(
       {required String searchInput, int pageNumber = 0}) async {
-    emit(SearchLoading());
+    if (pageNumber == 0) {
+      emit(SearchLoading());
+    } else {
+      emit(SearchLoadingPagination());
+    }
+
     var data = await fethcSearchResultUseCase.call(searchInput, pageNumber);
-    data.fold((l) => emit(SearchFailure(l.erroMessage)),
+    data.fold(
+        (l) => pageNumber == 0
+            ? emit(SearchFailure(l.erroMessage))
+            : emit(SearchFailurePagination(l.erroMessage)),
         (r) => emit(SearchSuccess(r)));
   }
 }

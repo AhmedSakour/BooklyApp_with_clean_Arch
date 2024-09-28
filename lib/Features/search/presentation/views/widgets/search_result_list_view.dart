@@ -23,6 +23,7 @@ class _SearchResultListViewState extends State<SearchResultListView> {
     scrollController = ScrollController();
     scrollController.addListener(scrollListener);
     searchInput = BlocProvider.of<SearchInputCubit>(context).searchInput;
+
     super.initState();
   }
 
@@ -41,18 +42,27 @@ class _SearchResultListViewState extends State<SearchResultListView> {
   }
 
   @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      controller: scrollController,
-      padding: EdgeInsets.zero,
-      itemCount: widget.books.length,
-      itemBuilder: (context, index) {
-        return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: SearchBookListViewItem(
-              book: widget.books[index],
-            ));
-      },
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * .75,
+      child: ListView.builder(
+        controller: scrollController,
+        padding: EdgeInsets.zero,
+        itemCount: widget.books.length,
+        itemBuilder: (context, index) {
+          return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: SearchBookListViewItem(
+                book: widget.books[index],
+              ));
+        },
+      ),
     );
   }
 }
